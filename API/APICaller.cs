@@ -8,7 +8,7 @@ namespace API
 {
     public class ApiCaller
     {
-        private IBoardControllerData _data = new BoardControllerData();
+        private IBoardAuthenticator _data = new BoardAuthenticator();
 
         public ApiCaller(string baseUrl)
         {

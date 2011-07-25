@@ -1,6 +1,6 @@
 ﻿namespace API.Interfaces
 {
-    public interface IBoardControllerData
+    public interface IBoardAuthenticator
     {
         string Address { get; set; }
         string Username { get; set; }
