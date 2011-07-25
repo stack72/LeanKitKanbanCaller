@@ -1,8 +1,6 @@
-﻿using API.Interfaces;
-
-namespace API
+﻿namespace API
 {
-    public class BoardAuthenticator: IBoardAuthenticator
+    public class BoardAuthenticationDetails
     {
         public string Address { get; set; }
         public string Username { get; set; }
