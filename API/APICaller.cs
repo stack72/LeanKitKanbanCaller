@@ -198,6 +198,7 @@ namespace API
                 throw new ArgumentNullException("password");
 
             var httpClient = new HttpClient();
+            httpClient.Request.ContentType = HttpContentTypes.ApplicationJson;
             httpClient.Request.Accept = HttpContentTypes.ApplicationJson;
             httpClient.Request.SetBasicAuthentication(userName, password);
 

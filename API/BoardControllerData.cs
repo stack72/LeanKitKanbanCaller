@@ -21,11 +21,5 @@ namespace API
         public string Address { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
-        //public Int64 BoardId { get; set; }
-        //public Int64 BoardVersion { get; set; }
-        //public Int64 CardId { get; set; }
-        //public Int64 LaneId { get; set; }
-        //public int Position { get; set; }
-        //public string OverrideComment { get; set; }
     }
 }
