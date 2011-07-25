@@ -8,7 +8,7 @@ namespace API
 {
     public class ApiCaller
     {
-        private IBoardAuthenticator _data = new BoardAuthenticator();
+        private BoardAuthenticationDetails _data = new BoardAuthenticationDetails();
 
         public ApiCaller(string baseUrl)
         {
@@ -180,7 +180,7 @@ namespace API
             var url = _data.Address + address;
             try
             {
-                var staticBody = request.Get(url).StaticBody<T>();
+                var staticBody = request.Get(url).DynamicBody();
                 return staticBody;
             }
             catch (WebException ex)

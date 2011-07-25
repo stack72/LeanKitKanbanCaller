@@ -53,12 +53,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BoardControllerData.cs" />
+    <Compile Include="Entities\BoardAuthenticationDetails.cs" />
     <Compile Include="DTO\CardItem.cs" />
     <Compile Include="DTO\CommentItem.cs" />
     <Compile Include="Entities\BoardIdentifierWrapper.cs" />
     <Compile Include="Interfaces\IAPICaller.cs" />
-    <Compile Include="Interfaces\IBoardAuthenticator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="APICaller.cs" />
   </ItemGroup>

@@ -1,4 +1,4 @@
-﻿namespace API
+﻿namespace API.Entities
 {
     public class BoardAuthenticationDetails
     {
