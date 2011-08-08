@@ -180,7 +180,7 @@ namespace API
             var url = _data.Address + address;
             try
             {
-                var staticBody = request.Get(url).DynamicBody();
+                var staticBody = request.Get(url).StaticBody<T>();
                 return staticBody;
             }
             catch (WebException ex)

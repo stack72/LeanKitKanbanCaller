@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace API.Entities
 {
@@ -9,7 +6,7 @@ namespace API.Entities
     {
         public string ReplyCode { get; set; }
         public string ReplyText { get; set; }
-        public Data ReplyData { get; set; }
+        public List<Data> ReplyData { get; set; }
         //public string ReplyData { get; set; }
     }
 
