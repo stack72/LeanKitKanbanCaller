@@ -60,6 +60,7 @@
     <Compile Include="DTO\CommentItem.cs" />
     <Compile Include="Entities\BoardUser.cs" />
     <Compile Include="Entities\Card.cs" />
+    <Compile Include="Entities\ClassOfService.cs" />
     <Compile Include="Entities\Lane.cs" />
     <Compile Include="Entities\Priority.cs" />
     <Compile Include="Entities\IdentifierWrapper.cs" />

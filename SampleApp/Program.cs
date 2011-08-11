@@ -10,8 +10,8 @@ namespace SampleApp
             caller.Authenticate("paulstack@hotmail.com", "qwerty");
 
             //var x = caller.GetBoardIdentifiers("13835201");
-            //var y = caller.GetBoardAttributes("13835201");
-            var z = caller.GetListOfItemsInBackLog("13835201");
+            var y = caller.GetBoardAttributes("13835201");
+            //var z = caller.GetListOfItemsInBackLog("13835201");
         }
     }
 }
