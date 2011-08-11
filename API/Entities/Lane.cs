@@ -16,6 +16,11 @@ namespace API.Entities
         public string Width { get; set; }
         public string ParentLaneId { get; set; }
         public List<Card> Cards { get; set; }
+        public string Orientation { get; set; }
+        public List<int> ChildLaneIds { get; set; }
+        public List<int> SiblingLaneIds { get; set; }
+        public string CardLimit { get; set; }
+        public string LaneState { get; set; }
 
         public override string ToString()
         {

@@ -48,34 +48,21 @@ namespace API
             return response;
         }
 
+        public string GetListOfItemsInBackLog(string boardId)
+        {
+            //Gets a listing of all the Cards contained in the Backlog
+            //This method takes the Id of the Board which can be derived from the URL when viewing the Board or by calling using the GetBoards method
+            //Ex. - http://test.leankitkanban.com/Boards/Show/12345 - BoardId = 12345
+            //Example of output
+            //{"ReplyCode":200,"ReplyText":"Backlog successfully retrieved.","ReplyData":[{"Id":1,"Active":false,"Title":"Backlog","Description":"","CardLimit":0,"ClassType":1,"Width":1,"Version":18,"Cards":[],"UserSubscription":0}]}
+
+            var response = Get<string>(string.Format("/Kanban/Api/Board/{0}/Backlog", boardId));
+
+            return response;
+        }
+
         #region old code
-        
-        ///// <summary>
-        ///// This method takes a board Id and returns all of its attributes
-        ///// </summary>
-        ///// <param name="boardId"></param>
-        ///// <returns></returns>
-        
-
-        ///// <summary>
-        ///// Gets a List of all the Items currently in the backlog
-        ///// </summary>
-        ///// <param name="boardId">string BoardId</param>
-        ///// <returns>string of JSON data</returns>
-        //public string GetListOfItemsInBackLog(string boardId)
-        //{
-        //    //Gets a listing of all the Cards contained in the Backlog
-        //    //This method takes the Id of the Board which can be derived from the URL when viewing the Board or by calling using the GetBoards method
-        //    //Ex. - http://test.leankitkanban.com/Boards/Show/12345 - BoardId = 12345
-        //    //Example of output
-        //    //{"ReplyCode":200,"ReplyText":"Backlog successfully retrieved.","ReplyData":[{"Id":1,"Active":false,"Title":"Backlog","Description":"","CardLimit":0,"ClassType":1,"Width":1,"Version":18,"Cards":[],"UserSubscription":0}]}
-
-        //    var response = Requester(string.Format("/Kanban/Api/Board/{0}/Backlog", boardId), "GET");
-
-        //    return response;
-        //}
-
-        ///// <summary>
+        //// <summary>
         ///// Gets a List of all the Items currently in the Archive
         ///// </summary>
         ///// <param name="boardId">string boardId</param>
@@ -163,11 +150,6 @@ namespace API
         //    return response;
         //}
 
-
-        //private string Requester(string address, string method)
-        //{
-        //    return Requester(address, method, string.Empty);
-        //}
         #endregion
 
         private T Get<T>(string address)
@@ -185,7 +167,7 @@ namespace API
             }
         }
 
-        HttpClient CreateHttpRequest(string userName, string password)
+        static HttpClient CreateHttpRequest(string userName, string password)
         {
             if (string.IsNullOrWhiteSpace(userName))
                 throw new ArgumentNullException("userName");

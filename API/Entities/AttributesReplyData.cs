@@ -10,5 +10,7 @@ namespace API.Entities
         public string Active { get; set; }
         public string OrganizationId { get; set; }
         public List<Lane> Lanes { get; set; }
+        public List<BoardUser> BoardUsers { get; set; }
+
     }
 }
