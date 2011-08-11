@@ -24,13 +24,7 @@ namespace API
             _data.Password = password;
         }
 
-        /// <summary>
-        /// This method takes a board Id and returns all of the information about that board
-        /// this includes card types, users associated with the board and lane names
-        /// </summary>
-        /// <param name="boardId">string BoardId</param>
-        /// <returns>string of JSON data</returns>
-        public Wrapper GetBoardIdentifiers(string boardId)
+        public IdentifierWrapper GetBoardIdentifiers(string boardId)
         {
             //This method is used to get all the necessary Identifiers for a Board used within the other API calls.
             //This method takes the Id of the Board which can be derived from the URL when viewing the Board or by calling using the GetBoards method
@@ -38,7 +32,18 @@ namespace API
             //Example of output
             //{"ReplyCode":200,"ReplyText":"The Board Identifiers were retrieved successfully.","ReplyData":[{"BoardId":101,"CardTypes":[{"Id":1,"Name":"Defect"},{"Id":2,"Name":"Improvement"},{"Id":3,"Name":"Feature"},{"Id":4,"Name":"Task"}],"BoardUsers":[{"Id":101,"Name":"testuser@test.com"},{"Id":102,"Name":"testmanager@test.com"},{"Id":103,"Name":"testreadonly@test.com"},{"Id":1,"Name":"info@bandit-software.com"}],"Lanes":[{"Id":303,"Name":"Backlog"},{"Id":304,"Name":"Archive"},{"Id":305,"Name":"Lane 1"},{"Id":306,"Name":"Lane 2"},{"Id":307,"Name":"Lane 3"}],"ClassesOfService":[{"Id":104,"Name":"Date Dependent"},{"Id":102,"Name":"Expedite"},{"Id":103,"Name":"Regulatory"},{"Id":101,"Name":"Standard"}]}]}
 
-            var response = Get<Wrapper>(string.Format("/Kanban/Api/Board/{0}/GetBoardIdentifiers", boardId));
+            var response = Get<IdentifierWrapper>(string.Format("/Kanban/Api/Board/{0}/GetBoardIdentifiers", boardId));
+
+            return response;
+        }
+
+        public AttributesWrapper GetBoardAttributes(string boardId)
+        {
+            //Returns a listing of the Board attributes, the Lanes within the Board and all the Cards within those lanes.  Does not include the Cards within the Archive. 
+            //Example of output
+            //{"ReplyCode":200,"ReplyText":"Board successfully retrieved.","ReplyData":[{"Id":1,"Title":"Realistic Board","Description":"","Version":8,"Active":false,"OrganizationId":1,"Lanes":[{"Id":3,"Active":true,"Title":"Work Queue","Description":"","CardLimit":15,"ClassType":0,"Width":3,"Version":20,"Cards":[{"Id":1,"LaneId":0,"Title":"aaa","Description":"","ClassType":0,"TypeName":"Feature","Size":0,"Active":false,"Color":"Green","Version":8,"AssignedUserId":1,"IsBlocked":false}],"UserSubscription":0},{"Id":4,"Active":true,"Title":"Design","Description":"","CardLimit":3,"ClassType":0,"Width":1,"Version":20,"Cards":[{"Id":2,"LaneId":0,"Title":"bbb","Description":"","ClassType":2,"TypeName":"Defect","Size":0,"Active":false,"Color":"Red","Version":9,"AssignedUserId":1,"IsBlocked":false}],"UserSubscription":0},{"Id":5,"Active":true,"Title":"Doing","Description":"","CardLimit":2,"ClassType":0,"Width":1,"Version":20,"Cards":[],"UserSubscription":0},{"Id":6,"Active":true,"Title":"Code Review","Description":"","CardLimit":4,"ClassType":0,"Width":1,"Version":20,"Cards":[],"UserSubscription":0},{"Id":7,"Active":true,"Title":"QA Test","Description":"","CardLimit":3,"ClassType":0,"Width":1,"Version":20,"Cards":[],"UserSubscription":0},{"Id":8,"Active":true,"Title":"Deploy Queue","Description":"","CardLimit":6,"ClassType":0,"Width":2,"Version":20,"Cards":[],"UserSubscription":0},{"Id":9,"Active":true,"Title":"Done","Description":"","CardLimit":15,"ClassType":0,"Width":3,"Version":20,"Cards":[],"UserSubscription":0}],"BoardUsers":[{"Id":1,"FullName":"root root","EmailAddress":"chris.hefley@imihealth.com"}],"Backlog":{"Id":1,"Active":false,"Title":"Backlog","Description":"","CardLimit":0,"ClassType":1,"Width":1,"Version":20,"Cards":[],"UserSubscription":0},"Archive":{"Id":2,"Active":false,"Title":"Archive","Description":"","CardLimit":0,"ClassType":2,"Width":1,"Version":20,"Cards":[],"UserSubscription":0},"UserSubscription":0}]}
+
+            var response = Get<AttributesWrapper>(string.Format("/Kanban/Api/Boards/{0}", boardId));
 
             return response;
         }
@@ -50,16 +55,7 @@ namespace API
         ///// </summary>
         ///// <param name="boardId"></param>
         ///// <returns></returns>
-        //public string GetBoardAttributes(string boardId)
-        //{
-        //    //Returns a listing of the Board attributes, the Lanes within the Board and all the Cards within those lanes.  Does not include the Cards within the Archive. 
-        //    //Example of output
-        //    //{"ReplyCode":200,"ReplyText":"Board successfully retrieved.","ReplyData":[{"Id":1,"Title":"Realistic Board","Description":"","Version":8,"Active":false,"OrganizationId":1,"Lanes":[{"Id":3,"Active":true,"Title":"Work Queue","Description":"","CardLimit":15,"ClassType":0,"Width":3,"Version":20,"Cards":[{"Id":1,"LaneId":0,"Title":"aaa","Description":"","ClassType":0,"TypeName":"Feature","Size":0,"Active":false,"Color":"Green","Version":8,"AssignedUserId":1,"IsBlocked":false}],"UserSubscription":0},{"Id":4,"Active":true,"Title":"Design","Description":"","CardLimit":3,"ClassType":0,"Width":1,"Version":20,"Cards":[{"Id":2,"LaneId":0,"Title":"bbb","Description":"","ClassType":2,"TypeName":"Defect","Size":0,"Active":false,"Color":"Red","Version":9,"AssignedUserId":1,"IsBlocked":false}],"UserSubscription":0},{"Id":5,"Active":true,"Title":"Doing","Description":"","CardLimit":2,"ClassType":0,"Width":1,"Version":20,"Cards":[],"UserSubscription":0},{"Id":6,"Active":true,"Title":"Code Review","Description":"","CardLimit":4,"ClassType":0,"Width":1,"Version":20,"Cards":[],"UserSubscription":0},{"Id":7,"Active":true,"Title":"QA Test","Description":"","CardLimit":3,"ClassType":0,"Width":1,"Version":20,"Cards":[],"UserSubscription":0},{"Id":8,"Active":true,"Title":"Deploy Queue","Description":"","CardLimit":6,"ClassType":0,"Width":2,"Version":20,"Cards":[],"UserSubscription":0},{"Id":9,"Active":true,"Title":"Done","Description":"","CardLimit":15,"ClassType":0,"Width":3,"Version":20,"Cards":[],"UserSubscription":0}],"BoardUsers":[{"Id":1,"FullName":"root root","EmailAddress":"chris.hefley@imihealth.com"}],"Backlog":{"Id":1,"Active":false,"Title":"Backlog","Description":"","CardLimit":0,"ClassType":1,"Width":1,"Version":20,"Cards":[],"UserSubscription":0},"Archive":{"Id":2,"Active":false,"Title":"Archive","Description":"","CardLimit":0,"ClassType":2,"Width":1,"Version":20,"Cards":[],"UserSubscription":0},"UserSubscription":0}]}
-
-        //    var response = Requester(string.Format("/Kanban/Api/Boards/{0}", boardId), "GET");
-
-        //    return response;
-        //}
+        
 
         ///// <summary>
         ///// Gets a List of all the Items currently in the backlog

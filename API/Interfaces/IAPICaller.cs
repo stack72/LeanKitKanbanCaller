@@ -5,7 +5,7 @@ namespace API.Interfaces
 {
     public interface IApiCaller
     {
-        Wrapper GetBoardIdentifiers(string boardId);
+        IdentifierWrapper GetBoardIdentifiers(string boardId);
         //string GetBoardAttributes(string boardId);
         //string GetListOfItemsInBackLog(string boardId);
         //string GetListOfItemsInArchive(string boardId);

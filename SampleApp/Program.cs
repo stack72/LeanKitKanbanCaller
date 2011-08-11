@@ -8,7 +8,9 @@ namespace SampleApp
         {
             var caller = new ApiCaller("http://apitesting.leankitkanban.com");
             caller.Authenticate("paulstack@hotmail.com", "qwerty");
-            var x = caller.GetBoardIdentifiers("13835201");
+
+            //var x = caller.GetBoardIdentifiers("13835201");
+            var y = caller.GetBoardAttributes("13835201");
         }
     }
 }
